@@ -1,0 +1,11 @@
+SELECT p2.id, p2.geom, ST_Distance(p1.geom, p2.geom) AS distance
+FROM points AS p1
+CROSS JOIN LATERAL (
+    SELECT id, geom
+    FROM points
+    WHERE id <> p1.id
+    ORDER BY p1.geom <-> geom
+    LIMIT 4
+) AS p2
+WHERE p1.id = (SELECT MAX(id) FROM points);
+--ADITYA DUTTA

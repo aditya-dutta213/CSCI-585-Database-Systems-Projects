@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Nearest Neighbors</name>
+    <description>Lines connecting home to the four nearest neighbors</description>
+    <Style id="lineStyle">
+      <LineStyle>
+        <color>ff0000ff</color> <!-- blue -->
+        <width>2</width>
+      </LineStyle>
+    </Style>
+    <Placemark>
+      <name>Line to Neighbor 1</name>
+      <styleUrl>#lineStyle</styleUrl>
+      <LineString>
+        <coordinates>
+          -118.2731348236736,34.027492553653815,0
+          -118.2829037040753,34.022013834767534,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Line to Neighbor 2</name>
+      <styleUrl>#lineStyle</styleUrl>
+      <LineString>
+        <coordinates>
+         -118.2731348236736,34.027492553653815,0
+         -118.28511329368429,34.02529004463526,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Line to Neighbor 3</name>
+      <styleUrl>#lineStyle</styleUrl>
+      <LineString>
+        <coordinates>
+          -118.2731348236736,34.027492553653815,0
+         -118.2852001399824,34.02349067170331,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Line to Neighbor 4</name>
+      <styleUrl>#lineStyle</styleUrl>
+      <LineString>
+        <coordinates>
+        -118.2731348236736,34.027492553653815,0
+         -118.28374704825512,34.02032433795419,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

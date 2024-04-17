@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Polygon Example</name>
+    <description>Example of a KML polygon using coordinates from a query</description>
+    <Style id="polygonStyle">
+      <LineStyle>
+        <color>ff0000ff</color> <!-- red -->
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7fffffff</color> <!-- semi-transparent white -->
+      </PolyStyle>
+    </Style>
+    <Placemark>
+      <name>Query Polygon</name>
+      <description>Polygon derived from query coordinates</description>
+      <styleUrl>#polygonStyle</styleUrl>
+      <Polygon>
+        <tessellate>1</tessellate>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -118.28427431665168,34.018758048938984,0
+              -118.28879940407536,34.01974466138133,0
+              -118.28999347986374,34.020055795321525,0
+              -118.29181938213736,34.022322666703005,0
+              -118.28511329368429,34.02529004463526,0
+              -118.2731348236736,34.027492553653815,0
+              -118.28427431665168,34.018758048938984,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>

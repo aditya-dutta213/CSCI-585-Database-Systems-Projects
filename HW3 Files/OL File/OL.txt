@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OL</title>
+<script src="https://openlayers.org/api/OpenLayers.js"></script>
+<style>
+#map {
+    width:400px;
+    height:400px;
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<script>
+// Store location data - REPLACE WITH YOUR OWN COORDINATES
+var locationPoints = {
+    "locations": [
+        { "lat": 34.022013834767534, "lon": -118.2829037040753 },
+        { "lat": 34.02032433795419, "lon":-118.28374704825512 },
+        { "lat": 34.01974466138133, "lon": -118.28879940407536 },
+        { "lat": 34.0235790817617, "lon": -118.28650198520702 },
+        { "lat": 34.020055795321525, "lon": -118.28999347986374},
+        { "lat": 34.022322666703005, "lon": -118.29181938213736 },
+        { "lat": 34.02529004463526, "lon": -118.28511329368429 },
+        { "lat": 34.020497658114344, "lon": -118.28898429614695 },
+        { "lat": 34.0202134727261, "lon": -118.2852162519734 },
+        { "lat": 34.02349067170331, "lon": -118.2852001399824 },
+        { "lat": 34.02190885292857, "lon": -118.2861097068402 },
+        { "lat": 34.018758048938984, "lon": -118.28427431665168 },
+        { "lat":34.027492553653815, "lon": -118.2731348236736 },
+        
+        // ... Add all your 13 points here
+    ]
+};
+localStorage.setItem("myLocations", JSON.stringify(locationPoints));
+
+// Function to initialize the map
+function initMap() {
+    map = new OpenLayers.Map('map');
+    basemap = new OpenLayers.Layer.OSM("Simple OSM Map");
+    map.addLayer(basemap);
+    markers = new OpenLayers.Layer.Markers("Markers");
+    map.addLayer(markers);
+}
+
+// Function to add a marker to the map
+function addMarker(latitude, longitude) {
+    var lonLat = new OpenLayers.LonLat(longitude, latitude)
+        .transform(
+            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            map.getProjectionObject() // to Spherical Mercator Projection
+    );
+    var point = new OpenLayers.Marker(lonLat);
+    markers.addMarker(point);
+    map.setCenter(lonLat, 18); // second arg is zoom level
+}
+
+// Load and setup map layers
+initMap();
+
+// Retrieve and plot each stored location
+var storedData = JSON.parse(localStorage.getItem("myLocations"));
+if (storedData && storedData.locations) {
+    for (var i = 0; i < storedData.locations.length; i++) {
+        var point = storedData.locations[i];
+        addMarker(point.lat, point.lon);
+    }
+} else {
+    console.log('No locations data found in localStorage.');
+}
+</script>
+</body>
+</html>
